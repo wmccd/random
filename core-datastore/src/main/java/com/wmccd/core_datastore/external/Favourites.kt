@@ -1,18 +1,22 @@
-package com.wmccd.core_datastore.store
+package com.wmccd.core_datastore.external
 
 import android.util.Log
-import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
-internal class Favourites(private val dataStore: iFavouritesDataStore) {
+class Favourites(private val dataSource: iFavouritesDataSource) {
+
+    // Responsibility
+    // perform any transformations that make the set/get objects more convenient for consumption
+    // in this instance maps a pipe separated string into a list
+    // accepts an iFavouritesDataStore parameter
 
     companion object{
         const val DIVIDER = "|"
     }
 
-    val favouritesStream : Flow<List<String>> = dataStore.getFavourites.map { it ->
+    val favouritesStream : Flow<List<String>> = dataSource.getFavourites.map { it ->
         val list = arrayListOf<String>()
 
         when(it.length){
@@ -31,16 +35,16 @@ internal class Favourites(private val dataStore: iFavouritesDataStore) {
 
         when (favourite) {
             true -> {
-                val favs = dataStore.getFavourites.first()
-                dataStore.saveFavourites("$id$DIVIDER$favs")
+                val favs = dataSource.getFavourites.first()
+                dataSource.saveFavourites("$id$DIVIDER$favs")
             }
             false -> {
-                val original = dataStore.getFavourites.first()
+                val original = dataSource.getFavourites.first()
                 val removing = "$id$DIVIDER"
                 Log.d("XXX", "original:<$original> removing:<$removing>")
                 val updated = original.replace(removing, "")
                 Log.d("XXX", "updated:<$updated> removing:<$removing>")
-                dataStore.saveFavourites("$updated")
+                dataSource.saveFavourites("$updated")
 
             }
         }

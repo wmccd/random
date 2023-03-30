@@ -1,12 +1,9 @@
-package com.wmccd.core_datastore
+package com.wmccd.core_datastore.external
 
 import android.content.Context
-import android.util.Log
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.wmccd.core_datastore.store.Favourites
-import com.wmccd.core_datastore.store.FavouritesDataStore
-import com.wmccd.core_datastore.store.iFavouritesDataStore
+import com.wmccd.core_datastore.internal.favourites.MockFavouritesDataStore
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.first
@@ -18,11 +15,11 @@ import org.junit.runner.RunWith
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(AndroidJUnit4::class)
-class FavouritesTest {
+class MockFavouritesDataSource {
 
     private val testContext: Context = ApplicationProvider.getApplicationContext()
 
-    private val favouritesDataStore: iFavouritesDataStore = TestFavouritesDataStore()
+    private val favouritesDataStore: iFavouritesDataSource = MockFavouritesDataStore()
 
     @Before
     fun setup(){
@@ -35,7 +32,7 @@ class FavouritesTest {
     fun favouritesStream_empty_emptyList() = runTest {
 
         //assemble
-        val favourites = Favourites( dataStore = favouritesDataStore)
+        val favourites = Favourites( dataSource = favouritesDataStore)
         val expectedSize = 0
         var actual = listOf<String>()
 
@@ -55,7 +52,7 @@ class FavouritesTest {
     fun favouritesStream_oneFavouriteAdded_oneItemInList() = runTest{
 
         //assemble
-        val favourites = Favourites( dataStore = favouritesDataStore)
+        val favourites = Favourites( dataSource = favouritesDataStore)
         val expectedSize = 1
         val idToAdd = "12"
         var actual = listOf<String>()
@@ -72,7 +69,7 @@ class FavouritesTest {
     fun favouritesStream_twoFavouritesAdded_twoItemsInList() = runTest{
 
         //assemble
-        val favourites = Favourites( dataStore = favouritesDataStore)
+        val favourites = Favourites( dataSource = favouritesDataStore)
         val expectedSize = 2
         val idToAdd1 = "12"
         val idToAdd2 = "37"
@@ -91,7 +88,7 @@ class FavouritesTest {
     fun favouritesStream_threeFavouritesAddedOneRemoved_twoItemsInList() = runTest{
 
         //assemble
-        val favourites = Favourites( dataStore = favouritesDataStore)
+        val favourites = Favourites( dataSource = favouritesDataStore)
         val expectedSize = 2
         val idToAdd1 = "12"
         val idToAdd2 = "37"

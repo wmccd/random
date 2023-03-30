@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "random"
 include ':app'
 include ':core-datastore'
+include ':core_database'

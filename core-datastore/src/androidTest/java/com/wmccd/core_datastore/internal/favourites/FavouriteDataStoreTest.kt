@@ -1,11 +1,9 @@
-package com.wmccd.core_datastore
+package com.wmccd.core_datastore.internal.favourites
 
 import android.content.Context
-import android.util.Log
-import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.wmccd.core_datastore.store.FavouritesDataStore
+import com.wmccd.core_datastore.internal.favourites.FavouritesDataStore
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
@@ -14,7 +12,6 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 

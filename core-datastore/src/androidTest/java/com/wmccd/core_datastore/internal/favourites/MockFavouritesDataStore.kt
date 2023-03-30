@@ -1,10 +1,10 @@
-package com.wmccd.core_datastore
+package com.wmccd.core_datastore.internal.favourites
 
 import android.util.Log
-import com.wmccd.core_datastore.store.iFavouritesDataStore
+import com.wmccd.core_datastore.external.iFavouritesDataSource
 import kotlinx.coroutines.flow.*
 
-class TestFavouritesDataStore: iFavouritesDataStore {
+class MockFavouritesDataStore: iFavouritesDataSource {
 
     var favorites = ""
 

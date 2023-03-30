@@ -1,0 +1,33 @@
+#[versions]
+## Define the dependency versions
+#kotlin_version = "1.7.0"
+#compose_version = "1.2.0"
+#room_version = "2.5.1"
+#lifecycle_version = "2.6.1"
+#androidGradlePlugin_version = "7.4.0"
+#
+#
+#[libraries]
+## Define the libraries
+#room_runtime = {module = "androidx.room:room-runtime", version.ref = "room_version" }
+#room_ktx = {module = "androidx.room:room-ktx", version.ref = "room_version" }
+#room_compiler_kapt = {module = "androidx.room:room-compiler", version.ref = "room_version" }
+#
+#lifecycle-runtime-ktx = {module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle_version" }
+#
+#compose_ui = { module = "androidx.compose.ui:ui", version.ref = "compose_version" }
+#compose_material = { module = "androidx.compose.material:material", version.ref = "compose_version" }
+#compose_tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose_version" }
+#compose_icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose_version" }
+#
+#[bundles]
+## Define bundles/groups of libraries
+#compose = ["compose.ui", "compose.material", "compose.tooling", "compose.icons"]
+#room = ["room_runtime", "room_ktx"]
+#lifecycle = ["lifecycle-runtime-ktx"]
+#
+#
+#[plugins]
+#kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin_version" }
+#android-application = { id = "com.android.application", version.ref = "androidGradlePlugin_version" }
+#android-library = { id = "com.android.library", version.ref = "androidGradlePlugin_version" }
