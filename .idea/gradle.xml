@@ -12,8 +12,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/core-datastore" />
-            <option value="$PROJECT_DIR$/core_database" />
+            <option value="$PROJECT_DIR$/datasource_database" />
+            <option value="$PROJECT_DIR$/datasource_datastore" />
+            <option value="$PROJECT_DIR$/datasource_services" />
+            <option value="$PROJECT_DIR$/feature_repository_record_collection" />
+            <option value="$PROJECT_DIR$/feature_viewmodel_record_collection" />
           </set>
         </option>
       </GradleProjectSettings>

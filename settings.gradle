@@ -14,5 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "random"
 include ':app'
-include ':core-datastore'
-include ':core_database'
+include ':datasource_datastore'
+include ':datasource_database'
+include ':feature_repository_record_collection'
+include ':datasource_services'
+include ':feature_viewmodel_record_collection'
