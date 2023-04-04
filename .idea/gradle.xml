@@ -15,8 +15,9 @@
             <option value="$PROJECT_DIR$/datasource_database" />
             <option value="$PROJECT_DIR$/datasource_datastore" />
             <option value="$PROJECT_DIR$/datasource_services" />
-            <option value="$PROJECT_DIR$/feature_repository_record_collection" />
-            <option value="$PROJECT_DIR$/feature_viewmodel_record_collection" />
+            <option value="$PROJECT_DIR$/presentation_record_collection" />
+            <option value="$PROJECT_DIR$/repository_record_collection" />
+            <option value="$PROJECT_DIR$/ui_record_collection" />
           </set>
         </option>
       </GradleProjectSettings>
