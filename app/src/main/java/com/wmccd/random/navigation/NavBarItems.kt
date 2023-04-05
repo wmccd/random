@@ -21,11 +21,11 @@ object AddBarItem {
     )
 }
 
-object FavouritesBarItem{
+object RandomAlbumBarItem{
     val item = BarItem(
-        title = "Favourites",
-        image = Icons.Filled.Favorite,
-        route = NavRoutes.Favourites.route
+        title = "Random Album",
+        image = Icons.Filled.PlayArrow,
+        route = NavRoutes.RandomAlbum.route
     )
 }
 
@@ -33,6 +33,6 @@ object NavBarItems {
     val BarItems = listOf(
         HomeBarItem.item,
         AddBarItem.item,
-        FavouritesBarItem.item
+        RandomAlbumBarItem.item
     )
 }

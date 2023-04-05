@@ -34,7 +34,8 @@ fun AddScreen(onAddAlbum:(RecordVMModel) -> Unit){
     ){
 
         Column(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             OutlinedTextField(
                 value = aristText,
@@ -62,6 +63,9 @@ fun AddScreen(onAddAlbum:(RecordVMModel) -> Unit){
                             )
                         )
                     }
+
+                    albumText = TextFieldValue("")
+                    aristText = TextFieldValue("")
                 },
                 content = { Text(text = "Add")}
             )

@@ -21,9 +21,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.feature_viewmodel_record_collection.external.iRecordCollectionViewModel
 import com.example.ui_record_collection.AddScreen
-import com.example.ui_record_collection.Favourites
+import com.example.ui_record_collection.RandomAlbumScreen
 import com.example.ui_record_collection.HomeScreen
 import com.wmccd.random.injection.Injection
 import com.wmccd.random.navigation.NavRoutes
@@ -89,8 +88,8 @@ fun NavigationHost(navController: NavHostController){
                 viewModel = injection.recordCollectionViewModel
             )
         }
-        composable(NavRoutes.Favourites.route)  {
-            Favourites(
+        composable(NavRoutes.RandomAlbum.route)  {
+            RandomAlbumScreen(
                 viewModel = injection.recordCollectionViewModel
             )
         }
@@ -104,7 +103,6 @@ fun BottomNavigationBar(navController: NavHostController){
     BottomNavigation {
         val backStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = backStackEntry?.destination?.route
-
         NavBarItems.BarItems.forEach { navItem ->
             BottomNavigationItem(
                 selected = currentRoute == navItem.route,
