@@ -6,7 +6,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface iRecordCollectionViewModel {
 
-    val combinedData: Flow<List<FavourableRecordVMModel>>
+    val allAlbums: Flow<List<FavourableRecordVMModel>>
+
+    val favouriteAlbums: Flow<List<FavourableRecordVMModel>>
+
     fun toggleFavourite(id: String, favourite: Boolean)
     fun addAlbum(recordVMModel: RecordVMModel)
     fun deleteAlbum( id: Int )

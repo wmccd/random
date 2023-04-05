@@ -19,19 +19,30 @@ class RecordCollectionViewModel(
 
     private val converter = RecordVMAndRepositoryModelConverter()
 
-    override val combinedData:  Flow<List<FavourableRecordVMModel>> = combine(
+    override val allAlbums:  Flow<List<FavourableRecordVMModel>> = combine(
         albumsRepository.allAlbums,
         favouritesRepository.favouritesStream
     ){ albums, favourites ->
         albums.map { album ->
-            val fav = favourites.contains( album.id.toString())
+            val aFavourite = favourites.contains( album.id.toString())
             FavourableRecordVMModel(
                 converter.convert(album),
-                fav
+                aFavourite
             )
         }
     }
-
+    override val favouriteAlbums: Flow<List<FavourableRecordVMModel>> = combine(
+        albumsRepository.allAlbums,
+        favouritesRepository.favouritesStream
+    ){ albums, favourites ->
+        albums.map { album ->
+            val aFavourite = favourites.contains( album.id.toString())
+            FavourableRecordVMModel(
+                converter.convert(album),
+                aFavourite
+            )
+        }.filter { it.favourite }
+    }
     override fun toggleFavourite(id: String, favourite: Boolean){
         viewModelScope.launch {
             favouritesRepository.toggleFavourite(

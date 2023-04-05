@@ -21,9 +21,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.ui_record_collection.Add
+import com.example.feature_viewmodel_record_collection.external.iRecordCollectionViewModel
+import com.example.ui_record_collection.AddScreen
 import com.example.ui_record_collection.Favourites
 import com.example.ui_record_collection.HomeScreen
+import com.wmccd.random.injection.Injection
+import com.wmccd.random.navigation.NavRoutes
 import com.wmccd.random.ui.theme.RandomTheme
 
 class MainActivity : ComponentActivity() {
@@ -42,6 +45,8 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,21 +73,31 @@ fun MainScreen() {
 @Composable
 fun NavigationHost(navController: NavHostController){
 
+    val injection = Injection()
+
     NavHost(
         navController = navController,
         startDestination = NavRoutes.Home.route
     ){
         composable(NavRoutes.Home.route)  {
-            HomeScreen()
+            HomeScreen(
+                viewModel = injection.recordCollectionViewModel
+            )
         }
         composable(NavRoutes.Contacts.route)  {
-            Add()
+            AddScreen(
+                viewModel = injection.recordCollectionViewModel
+            )
         }
         composable(NavRoutes.Favourites.route)  {
-            Favourites()
+            Favourites(
+                viewModel = injection.recordCollectionViewModel
+            )
         }
     }
 }
+
+
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController){

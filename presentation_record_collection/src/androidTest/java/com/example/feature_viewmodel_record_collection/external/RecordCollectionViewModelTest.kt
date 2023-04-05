@@ -5,9 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.feature_viewmodel_record_collection.MockAlbumsRepository
 import com.example.feature_viewmodel_record_collection.MockFavouritesRepository
 import com.example.feature_viewmodel_record_collection.external.models.RecordVMModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 
 import org.junit.Test
@@ -35,7 +33,7 @@ class RecordCollectionViewModelTest {
         val expectedSize = 0
 
         //act
-        val actual = recordCollectionViewModel.combinedData.first().size
+        val actual = recordCollectionViewModel.allAlbums.first().size
 
         //assert
         assertEquals(expectedSize, actual)
@@ -60,7 +58,7 @@ class RecordCollectionViewModelTest {
 
         //act
         recordCollectionViewModel.addAlbum(recordVMModel)
-        val actual = recordCollectionViewModel.combinedData.first().size
+        val actual = recordCollectionViewModel.allAlbums.first().size
 
         //assert
         assertEquals(expectedSize, actual)
@@ -88,7 +86,7 @@ class RecordCollectionViewModelTest {
         )
 
         //act
-        val actual = recordCollectionViewModel.combinedData.first()
+        val actual = recordCollectionViewModel.allAlbums.first()
 
         //assert
         assertEquals(recordVMModel.id, actual[0].recordVMModel.id)
@@ -116,7 +114,7 @@ class RecordCollectionViewModelTest {
         recordCollectionViewModel.deleteAlbum(id = recordVMModel.id.toInt())
 
         //act
-        val actual = recordCollectionViewModel.combinedData.first().size
+        val actual = recordCollectionViewModel.allAlbums.first().size
 
         //assert
         assertEquals(expected, actual)
@@ -149,7 +147,7 @@ class RecordCollectionViewModelTest {
         )
 
         //act
-        val actual = recordCollectionViewModel.combinedData.first()
+        val actual = recordCollectionViewModel.allAlbums.first()
 
         //assert
         assertEquals(recordVMModel1.id, actual[0].recordVMModel.id)

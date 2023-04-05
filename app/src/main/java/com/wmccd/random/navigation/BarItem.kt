@@ -1,4 +1,4 @@
-package com.wmccd.random
+package com.wmccd.random.navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

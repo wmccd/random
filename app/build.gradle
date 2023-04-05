@@ -57,6 +57,11 @@ dependencies {
     implementation 'androidx.compose.material:material:1.3.1'
     implementation 'androidx.navigation:navigation-compose:2.5.3'
     implementation project(path: ':ui_record_collection')
+    implementation project(path: ':datasource_datastore')
+    implementation project(path: ':presentation_record_collection')
+    implementation project(path: ':repository_record_collection')
+    implementation project(path: ':datasource_database')
+    implementation project(path: ':datasource_services')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
